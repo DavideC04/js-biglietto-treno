@@ -16,34 +16,36 @@ Il recap dei dati e l'output del prezzo finale va stampato in pagina. */
 
 // PASSO 1: chiedere all'utente il numero dei chilometri che vuole percorrere e l'età del passeggero
 
-let numberKilometres = parseInt(prompt("Quanti chilometri si vuole percorrere?"));
+let numberKilometres = parseInt(prompt("Quanti chilometri si vogliono percorrere?"));
 
 let passengerAge = parseInt(prompt("Quanti anni ha il passeggero?"));
 
 // definisco il prezzo del biglietto in base ai km
 
-let priceKm = numberKilometres * 0.21.toFixed(2);
+let priceTicket = numberKilometres * 0.21.toFixed(2);
 
-
-ticketPrice1 = priceKm * 0.20.toFixed(2);
-
-ticketPrice2 = priceKm * 0.40.toFixed(2);
 
 // se il passeggero è minorenne, va applicato uno sconto del 20%
 // se il passeggero è over 65, va applicato uno sconto del 40%
 // altrimenti, non verrà applicato alcuno sconto
 if (passengerAge < 18) {
 
-    console.log("Il biglietto costa: " + ticketPrice1);
+    priceTicket = priceTicket - (priceTicket * 0.20);
+
+    console.log("Il biglietto costa: " + priceTicket.toFixed(2) + "€");
 
 } else if (passengerAge > 65) {
 
-    console.log("Il biglietto costa: " + ticketPrice2);
+    priceTicket = priceTicket - (priceTicket * 0.40);
+
+    console.log("Il biglietto costa: " + priceTicket.toFixed(2)+ "€");
 
 } else {
 
-    console.log("Il biglietto costa: " + priceKm);
+    console.log("Il biglietto costa: " + priceTicket.toFixed(2)+ "€");
 
 }
 
+// stampo su HTML
 
+document.getElementById("ticket_price").innerHTML = priceTicket.toFixed(2)+ "€";
